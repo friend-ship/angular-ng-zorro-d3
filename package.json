@@ -21,10 +21,13 @@
         "@angular/platform-browser-dynamic": "^6.0.3",
         "@angular/router": "^6.0.3",
         "@swimlane/ngx-charts": "^8.1.0",
+        "angular-gridster2": "^6.0.5",
         "classlist.js": "^1.1.20150312",
         "core-js": "^2.5.4",
         "d3": "^5.5.0",
+        "echarts": "^4.1.0",
         "ng-zorro-antd": "^1.1.0",
+        "ngx-echarts": "^3.1.0",
         "rxjs": "^6.0.0",
         "web-animations-js": "^2.3.1",
         "zone.js": "^0.8.26"

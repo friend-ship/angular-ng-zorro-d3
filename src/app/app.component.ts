@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgZorroAntModule } from 'ng-zorro-antd';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single, radarData, pieData, lineData } from './data';
 
@@ -40,10 +39,11 @@ export class AppComponent {
   };
 
   constructor() {
-    Object.assign(this, { single});
-    Object.assign(this, { radarData});
-    Object.assign(this, { pieData});
-    Object.assign(this, { lineData});
+    Object.assign(this, { single });
+    Object.assign(this, { radarData });
+    Object.assign(this, { pieData });
+    Object.assign(this, { lineData });
   }
+
 
 }
