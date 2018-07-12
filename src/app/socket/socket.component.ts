@@ -11,7 +11,7 @@ export class SocketComponent implements OnInit {
   constructor(public socketService: SocketService) { }
 
   ngOnInit() {
-    this.socketService.connet('ws://10.1.104.73:8081').subscribe(
+    this.socketService.connet('ws://localhost:8081').subscribe(
       data => {
         console.log(data);
       },
