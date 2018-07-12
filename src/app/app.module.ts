@@ -1,3 +1,4 @@
+import { SocketService } from './socket/socket.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ import { SocketComponent } from './socket/socket.component';
     GridsterModule,
     NgxEchartsModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
