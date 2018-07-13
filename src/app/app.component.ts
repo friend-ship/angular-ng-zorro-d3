@@ -15,7 +15,6 @@ export class AppComponent {
   pieData: any[];
   lineData: any[];
 
-
   view: any[] = [600, 400];
   horizontalView: any[] = [700, 200];
   pieView: any[] = [700, 300];
