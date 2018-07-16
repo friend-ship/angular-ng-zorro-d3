@@ -10,12 +10,10 @@ import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { GridsterModule } from 'angular-gridster2';
 import { HomeComponent } from './home/home.component';
-// import { SocketComponent } from './socket/socket.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    // SocketComponent
   ],
   imports: [
     BrowserModule,
