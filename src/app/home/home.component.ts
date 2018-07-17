@@ -7,9 +7,10 @@ import { single, radarData, pieData, lineData } from './../data';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  optionbox: GridsterConfig;
+  options: GridsterConfig;
   dashboard: Array<GridsterItem>;
-  item: any = { cols: 6, rows: 1, y: 0, x: 0 };
+  item: any = { cols: 3, rows: 1, y: 0, x: 0 };
+  items: any = { cols: 3, rows: 1, y: 0, x: 3 };
   chartOption: any;
   constructor() {
   }
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.optionbox = {
+    this.options = {
       gridType: 'fit',
       compactType: 'none',
       // itemChangeCallback: this.itemResize,
