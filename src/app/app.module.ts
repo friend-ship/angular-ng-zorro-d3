@@ -10,21 +10,24 @@ import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { GridsterModule } from 'angular-gridster2';
 import { HomeComponent } from './home/home.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     NgxChartsModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
     GridsterModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    
   ],
   exports: [
     NgZorroAntdModule,
