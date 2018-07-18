@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
-import { GridsterConfig, GridsterItem, GridType, CompactType } from 'angular-gridster2';
+import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,11 @@ export class HomeComponent implements OnInit, AfterContentInit {
     public lineOption: any;
     static eventStart: any;
     static eventStop: any;
+
+    public echartsInstance1: any;
+    public echartsInstance2: any;
+    public echartsInstance3: any;
+    public echartsInstance4: any;
    
 
 
@@ -29,32 +34,53 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
+    let self = this;
       this.options = {
-        gridType: GridType.Fit,
-        compactType: CompactType.None,
-        pushItems: true,
+        gridType: 'fit',
+        compactType: 'none',
         draggable: {
           enabled: true
         },
         resizable: {
           enabled: true,
-          delayStart:0,
-          start: HomeComponent.eventStart,
-          stop: HomeComponent.eventStop
-  }
+        },
+        swap:true, //  允许项目切换位置，如果放在另一个上面  
+        pushItems: true,//  在调整大小和拖动时推送项目 
+        displayGrid: 'none',
+        margin:10,
+        itemChangeCallBack: function(item,itemComponent){
+            let echarts = document.getElementById(`${item.id}`);
+
+            if(echarts){
+                echarts.style.width = itemComponent.width + 'px';
+                echarts.style.height = itemComponent.height-30+'px';
+    
+                // 根据不同的模块，重置相应的图
+                let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4};
+                a[item.id].resize();
+            }
+        },
+        itemResizeCallback: function(item,itemComponent) {
+            let echarts = document.getElementById(`${item.id}`);
+
+            if(echarts){
+                echarts.style.width = itemComponent.width+'px';
+                echarts.style.height = itemComponent.height-30+'px';
+
+                let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4};
+                a[item.id].resize();
+            }
+        }
       }
 
       this.dashboard = [
-          {cols:2,rows:1,y:0,x:0},
-          {cols:2,rows:1,y:0,x:2}
+          {cols:4,rows:3,y:0,x:0,id:'demo1'},
+          {cols:2,rows:3,y:0,x:4,id:'demo2'},
+          {cols:2,rows:3,y:3,x:6,id:'demo3'},
+          {cols:4,rows:3,y:3,x:10,id:'demo4'},
       ]
   }
 
-  changedOptions() {
-      if(this.options.api && this.options.api.optionsChanged){
-          this.options.api.optionsChanged();
-      }
-  }
   
   ngAfterContentInit(){
         this.barOption = {
@@ -217,6 +243,18 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 data:[820, 932, 901, 934, 1290, 1330, 1320]
             }
             ]
+        }
+    }
+
+    onChartInit(e:any,i:number) { 
+        if(i===1){
+            this.echartsInstance1 = e;
+        }else if(i===2) {
+            this.echartsInstance2 = e;
+        }else if(i===3){
+            this.echartsInstance3 = e;
+        }else if(i===4){
+            this.echartsInstance4 = e;
         }
     }
 }
