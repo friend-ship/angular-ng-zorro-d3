@@ -20,18 +20,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
     public echartsInstance3: any;
     public echartsInstance4: any;
    
-
-
-    static itemChange(item,itemComponent) {
-        // console.info('itemChanged',item,itemComponent);
-    }
-
-    static itemResize(item,itemComponent) {
-        // console.info('itemResized',item,itemComponent);
-    }
- 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
     let self = this;
