@@ -1,0 +1,39 @@
+<gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of dashboard;let i = index;">
+        <div [ngSwitch]="i+1">
+            <div *ngSwitchCase="'1'">
+                <div echarts [options]="mixOption" ></div>
+            </div>
+            <div *ngSwitchCase="'2'">
+                <div echarts [options]="mixOption" ></div>
+            </div>
+             <!-- <div *ngSwitchCase="'3'">
+                <div echarts [options]="mixOption" ></div>
+            </div> -->
+        </div>
+    </gridster-item>
+</gridster>
+
+
+<!-- <gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of dashboard;let i = index;">
+        <div [ngSwitch]="i+1">
+            <div *ngSwitchCase="'1'">
+                    <div echarts [options]="barOption" class="demo-chart" (chartInit)="onChartInit($event,i+1)" id="demo1"></div>
+            </div>
+                <div *ngSwitchCase="'2'">
+                    <div echarts [options]="lineOption" class="demo-chart" (chartInit)="onChartInit($event,i+1)" id="demo2"></div>
+                </div>
+                <div *ngSwitchCase="'3'">
+                <div echarts [options]="pieOption" class="demo-chart" (chartInit)="onChartInit($event,i+1)" id="demo3"></div>
+            </div>
+            <div *ngSwitchCase="'4'">
+                    <div echarts [options]="radarOption" class="demo-chart" (chartInit)="onChartInit($event,i+1)" id="demo4"></div>
+            </div>
+            <div *ngSwitchCase="'5'">
+                <div echarts [options]="gaugeOption" class="demo-chart" (chartInit)="onChartInit($event,i+1)" id="demo5"></div>
+            </div>
+        </div>
+    </gridster-item>
+
+</gridster>-->

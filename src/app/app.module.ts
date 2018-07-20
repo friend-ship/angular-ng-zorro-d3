@@ -11,12 +11,14 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { GridsterModule } from 'angular-gridster2';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
+import { DynamicComponent } from './dynamic-data/dynamic-data.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DynamicComponent
   ],
   imports: [
     CommonModule,

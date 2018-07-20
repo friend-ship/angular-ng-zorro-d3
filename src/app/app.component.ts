@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single, radarData, pieData, lineData } from './data';
 
 
