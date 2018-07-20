@@ -11,7 +11,6 @@ declare let echarts: any;
 export class HomeComponent implements OnInit, AfterContentInit {
 
     options: GridsterConfig;
-    options1: GridsterConfig;
     dashboard: Array<GridsterItem>;
     public barOption:any;
     public lineOption: any;
@@ -19,8 +18,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
     public radarOption:any;
     public gaugeOption:any;
 
-    static eventStart: any;
-    static eventStop: any;
 
     public echartsInstance1: any;
     public echartsInstance2: any;
@@ -29,7 +26,13 @@ export class HomeComponent implements OnInit, AfterContentInit {
     public echartsInstance5: any;
 
    
-  constructor() { }
+  constructor() { 
+    //   this.barOption = Object.assign({},this.barOption);
+    //   this.lineOption = Object.assign({},this.lineOption);
+    //   this.pieOption = Object.assign({},this.pieOption);
+    //   this.radarOption = Object.assign({},this.radarOption);
+    //   this.gaugeOption = Object.assign({},this.gaugeOption);
+  }
 
   ngOnInit() {
     let self = this;
@@ -51,6 +54,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
         minItemArea:12,
         itemChangeCallBack: function(item,itemComponent){
             let echarts = document.getElementById(`${item.id}`);
+            console.log(echarts)
             if(echarts){
                 echarts.style.width = itemComponent.width + 'px';
                 echarts.style.height = itemComponent.height-30+'px';
