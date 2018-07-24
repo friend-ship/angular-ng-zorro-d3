@@ -37,10 +37,10 @@ export class DynamicComponent implements OnInit, AfterContentInit {
     //   this.radarOption = Object.assign({},this.radarOption);
     //   this.gaugeOption = Object.assign({},this.gaugeOption);
 
-    this.mixOption = Object.assign({},this.mixOption);
+    this.mixOption = Object.assign(this,this.mixOption);
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     let self = this;
       this.options = {
         gridType: 'fit',

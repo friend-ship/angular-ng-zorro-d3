@@ -49,15 +49,14 @@ export class HomeComponent implements OnInit, AfterContentInit {
         pushItems: true,//  在调整大小和拖动时推送项目 
         displayGrid: 'none',
         margin:10,
-        minItemCols:4,
+        minItemCols:3,
         minItemRows:3,
-        minItemArea:12,
+        minItemArea:9,
         itemChangeCallBack: function(item,itemComponent){
             let echarts = document.getElementById(`${item.id}`);
-            console.log(echarts)
             if(echarts){
                 echarts.style.width = itemComponent.width + 'px';
-                echarts.style.height = itemComponent.height-30+'px';
+                echarts.style.height = itemComponent.height-80+'px';
     
                 // 根据不同的模块，重置相应的图
                 let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
@@ -69,7 +68,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
             if(echarts){
                 echarts.style.width = itemComponent.width+'px';
-                echarts.style.height = itemComponent.height-30+'px';
+                echarts.style.height = itemComponent.height-80+'px';
 
                 let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
                 a[item.id].resize();
@@ -79,15 +78,13 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
 
       this.dashboard = [
-          {cols:4,rows:3,y:0,x:0,id:'demo1'},
-          {cols:6,rows:3,y:0,x:4,id:'demo2'},
-          {cols:4,rows:3,y:3,x:10,id:'demo3'},
-          {cols:10,rows:4,y:5,x:3,id:'demo4'},
-          {cols:4,rows:3,y:6,x:4,id:'demo5'}
+          {cols:5,rows:3,y:0,x:0,id:'demo1'},
+          {cols:5,rows:3,y:0,x:5,id:'demo2'},
+          {cols:3,rows:3,y:0,x:10,id:'demo3'},
+          {cols:10,rows:4,y:1,x:0,id:'demo4'},
+          {cols:3,rows:4,y:1,x:10,id:'demo5'}
       ]
 
-      
-      
   }
   
   
@@ -121,7 +118,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 }
             },
             grid: {
-            left: '3%',
+            left: '3',
             right: '4%',
             bottom: '3%',
             containLabel: true
@@ -193,20 +190,20 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 type:'line'
             }
             },
-            legend: {
-                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-            },
+            // legend: {
+            //     data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+            // },
             toolbox: {
                 feature: {
                     magicType:{
-                        type:['line','bar','stack','tiled'] // 折线 柱状  堆叠  平铺
+                        type:['line','bar','stack','tiled'], // 折线 柱状  堆叠  平铺
                     },
                     saveAsImage: {show:false}
                 }
             },
             grid: {
-                left: '3%',
-                right: '4%',
+                left: '3%',   
+                right: '5%',
                 bottom: '3%',
                 containLabel: true
             },
@@ -393,15 +390,15 @@ export class HomeComponent implements OnInit, AfterContentInit {
     }
 
     onChartInit(e:any,i:number) { 
-        if(i===1){
+        if(i===0){
             this.echartsInstance1 = e;
-        }else if(i===2) {
+        }else if(i===1) {
             this.echartsInstance2 = e;
-        }else if(i===3){
+        }else if(i===2){
             this.echartsInstance3 = e;
-        }else if(i===4){
+        }else if(i===3){
             this.echartsInstance4 = e;
-        }else if(i===5){
+        }else if(i===4){
             this.echartsInstance5 = e;
             var myEchart = echarts.init(this.echartsInstance5._dom);
             setInterval(()=> {
