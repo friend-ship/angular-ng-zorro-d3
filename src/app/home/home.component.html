@@ -1,17 +1,14 @@
 <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of dashboard;let i = index;">
-        <div>
-            
-        </div>
         <nz-card nzTitle='demo'>
             <div [ngSwitch]="i">
                 <div *ngSwitchCase="'0'">
                         <div echarts [options]="barOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo1"></div>
                 </div>
-                    <div *ngSwitchCase="'1'">
-                        <div echarts [options]="lineOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo2"></div>
-                    </div>
-                    <div *ngSwitchCase="'2'">
+                <div *ngSwitchCase="'1'">
+                    <div echarts [options]="lineOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo2"></div>
+                </div>
+                <div *ngSwitchCase="'2'">
                     <div echarts [options]="pieOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo3"></div>
                 </div>
                 <div *ngSwitchCase="'3'">

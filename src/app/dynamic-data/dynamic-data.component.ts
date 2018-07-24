@@ -11,38 +11,20 @@ declare let echarts: any;
 })
 export class DynamicComponent implements OnInit, AfterContentInit {
 
-    options: GridsterConfig;
-    dashboard: Array<GridsterItem>;
+  options1: GridsterConfig;
+    dashboard1: Array<GridsterItem>;
     itemToPush: GridsterItemComponent;
-    // public barOption:any;
-    // public lineOption: any;
-    // public pieOption:any;
-    // public radarOption:any;
-    // public gaugeOption:any;
-    // public echartsInstance1: any;
-    // public echartsInstance2: any;
-    // public echartsInstance3: any;
-    // public echartsInstance4: any;
-    // public echartsInstance5: any;
 
 
+    public myOption: any;
     public mixOption: any;
 
     public xData:any[] = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
     public dynamicData:any;
-  constructor() { 
-    //   this.barOption = Object.assign({},this.barOption);
-    //   this.lineOption = Object.assign({},this.lineOption);
-    //   this.pieOption = Object.assign({},this.pieOption);
-    //   this.radarOption = Object.assign({},this.radarOption);
-    //   this.gaugeOption = Object.assign({},this.gaugeOption);
-
-    this.mixOption = Object.assign(this,this.mixOption);
-  }
+    constructor() { }
 
   ngOnInit() { 
-    let self = this;
-      this.options = {
+      this.options1 = {
         gridType: 'fit',
         compactType: 'none',
         draggable: {
@@ -57,32 +39,27 @@ export class DynamicComponent implements OnInit, AfterContentInit {
         margin:10,
     }
 
-      this.dashboard = [
-          {cols:4,rows:3,y:0,x:0,initCallback: this.initItem.bind(this)},
-          {cols:6,rows:3,y:0,x:4,},
-          // {cols:4,rows:3,y:3,x:10,},
-          // {cols:10,rows:4,y:5,x:3,},
-          // {cols:4,rows:3,y:6,x:4}
+      this.dashboard1 = [
+        {cols:5,rows:3,y:0,x:0},
+        {cols:5,rows:3,y:0,x:5},
       ]
       
   }
-
-
-  initItem(item:GridsterItem,itemComponent:GridsterItemComponent){
-    this.itemToPush = itemComponent;
-  }
-
-  changedOptions(){
-    if(this.options.api && this.options.api.optionsChanged){
-      this.options.api.optionsChanged();
-    }
-    if(this.options.api && this.options.api.resize){
-      this.options.api.resize();
-    }
-  }
   
   ngAfterContentInit(){
-
+    this.myOption = {
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+      }]
+    };
     this.dynamicData = dynamicData;
       this.mixOption = {
         tooltip: {
