@@ -1,3 +1,11 @@
+<div nz-row>
+    <div nz-col [nzSpan]="2" [nzOffset]="1">
+        <button nz-button nzType="primary" routerLink="/home">home</button>
+    </div>
+    <div nz-col [nzSpan]="2">
+        <button nz-button nzType="primary" routerLink="/dynamic">dynamic</button>
+    </div>
+</div>
 <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of dashboard;let i = index;">
         <nz-card nzTitle='demo'>
@@ -14,9 +22,9 @@
                 <div *ngSwitchCase="'3'">
                         <div echarts [options]="radarOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo4"></div>
                 </div>
-                <div *ngSwitchCase="'4'">
+                <!-- <div *ngSwitchCase="'4'">
                     <div echarts [options]="gaugeOption" class="demo-chart" (chartInit)="onChartInit($event,i)" id="demo5"></div>
-                </div>
+                </div> -->
             </div>
         </nz-card>
     </gridster-item>

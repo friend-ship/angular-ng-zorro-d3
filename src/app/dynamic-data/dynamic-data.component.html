@@ -1,16 +1,29 @@
 <gridster [options]="options1">
     <gridster-item [item]="item" *ngFor="let item of dashboard1;let i = index;">
+        <div class="select-input">
+            <ul nz-menu [nzMode]="'line'" class="menu-width">
+                <li nz-submenu>
+                    <span title>test</span>
+                    <ul>
+                        <li nz-menu-item>update</li>
+                        <li nz-menu-item>delete</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <div [ngSwitch]="i+1">
-                <div *ngSwitchCase="'1'">
-                    <div echarts [options]="myOption" class="my-option"></div>
-                </div>
-                <div *ngSwitchCase="'2'">
-                    <div echarts [options]="mixOption" class="mix-option"></div>
-                </div>
-                    <!-- <div *ngSwitchCase="'3'">
-                    <div echarts [options]="mixOption" ></div>
-                </div> -->
+            <div *ngSwitchCase="'1'">
+                <div echarts [options]="myOption" class="my-option"></div>
             </div>
-        
+            <div *ngSwitchCase="'2'">
+                <div echarts [options]="mixOption" class="mix-option"></div>
+            </div>
+            <div *ngSwitchCase="'3'">
+                    <div echarts [options]="mixOption" class="my-option"></div>
+                </div>
+                <div *ngSwitchCase="'4'">
+                    <div echarts [options]="myOption" class="mix-option"></div>
+                </div>
+        </div>
     </gridster-item>
 </gridster>

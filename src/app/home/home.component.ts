@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
           {cols:5,rows:3,y:0,x:5,id:'demo2'},
           {cols:3,rows:3,y:0,x:10,id:'demo3'},
           {cols:10,rows:4,y:1,x:0,id:'demo4'},
-          {cols:3,rows:4,y:1,x:10,id:'demo5'}
+        //   {cols:3,rows:4,y:1,x:10,id:'demo5'}
       ]
 
   }
@@ -367,25 +367,25 @@ export class HomeComponent implements OnInit, AfterContentInit {
         };
 
 
-        this.gaugeOption = {
-            tooltip : {
-                formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-                feature: {
-                    // restore: {},
-                    // saveAsImage: {}
-                }
-            },
-            series: [
-                {
-                    name: '业务指标',
-                    type: 'gauge',
-                    detail: {formatter:'{value}%'},
-                    data: [{value: 50, name: '完成率'}]
-                }
-            ]
-        }
+        // this.gaugeOption = {
+        //     tooltip : {
+        //         formatter: "{a} <br/>{b} : {c}%"
+        //     },
+        //     toolbox: {
+        //         feature: {
+        //             // restore: {},
+        //             // saveAsImage: {}
+        //         }
+        //     },
+        //     series: [
+        //         {
+        //             name: '业务指标',
+        //             type: 'gauge',
+        //             detail: {formatter:'{value}%'},
+        //             data: [{value: 50, name: '完成率'}]
+        //         }
+        //     ]
+        // }
 
     }
 

@@ -42,6 +42,8 @@ export class DynamicComponent implements OnInit, AfterContentInit {
       this.dashboard1 = [
         {cols:5,rows:3,y:0,x:0},
         {cols:5,rows:3,y:0,x:5},
+        {cols:5,rows:3,y:3,x:0},
+        {cols:5,rows:3,y:3,x:5},
       ]
       
   }

@@ -12,6 +12,7 @@ import { GridsterModule } from 'angular-gridster2';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { DynamicComponent } from './dynamic-data/dynamic-data.component';
+import { AppRouterModule } from './app-router.module';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { DynamicComponent } from './dynamic-data/dynamic-data.component';
     NgZorroAntdModule,
     GridsterModule,
     NgxEchartsModule,
-    
+    AppRouterModule
   ],
   exports: [
     NgZorroAntdModule,

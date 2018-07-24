@@ -1,21 +1,29 @@
-<!-- <div nz-row>
-    <div nz-col [nzSpan]="16">
+<div nz-row>
+    <!-- <div nz-col [nzSpan]="10">
         <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
             [yAxisLabel]="yAxisLabel"></ngx-charts-bar-vertical>
     </div>
-</div> -->
+    <div nz-col [nzSpan]="12">
+        <ngx-charts-polar-chart [view]="radarView" [scheme]="colorScheme" [results]="radarData" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"></ngx-charts-polar-chart>
+    </div> -->
+    <div nz-col [nzSpan]="2">
+        <p><button nz-button nzType="primary" routerLink="home">home</button></p>
+        <p><button nz-button nzType="primary" routerLink="dynamic">dynamic</button></p>
+    </div>
+</div>
+
 
 
 <!-- 静态数据 -->
 <!-- <app-home></app-home> -->
 <!-- 动态数据 -->
-<app-dynamic-data></app-dynamic-data>
+<!-- <app-dynamic-data></app-dynamic-data> -->
 
 
 <!--<ngx-charts-bar-horizontal [view]="horizontalView" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"></ngx-charts-bar-horizontal>-->
 
-<!--<ngx-charts-polar-chart [view]="radarView" [scheme]="colorScheme" [results]="radarData" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"></ngx-charts-polar-chart>-->
+
 <!--<ngx-charts-pie-chart [view]="pieView" [scheme]="colorScheme" [results]="pieData" [animations]="animations" [legend]="showLegend"></ngx-charts-pie-chart>-->
 
 <!--<ngx-charts-line-chart [view]="lineView" [scheme]="colorScheme" [results]="lineData" [xAxis]="showXAxis" [yAxis]="showYAxis" [showGridLines]="true" [showXAxisLabel]="showXAxisLabel" [yAxisLabel]="yAxisLabel"></ngx-charts-line-chart>-->
