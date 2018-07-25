@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { GridsterConfig, GridsterItem, GridsterModule, GridsterItemComponent } from 'angular-gridster2';
-import { dynamicData } from '../data';
+import { dynamicMonthData,dynamicWeekData } from '../data';
 
 declare let echarts: any;
 
@@ -19,11 +19,28 @@ export class DynamicComponent implements OnInit, AfterContentInit {
     public myOption: any;
     public mixOption: any;
 
-    public xData:any[] = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    public xData: any;
+    public month:any[] = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    public week: any[] = ['周一','周二','周三','周四','周五','周六','周日'];
+    
     public dynamicData:any;
+
+    public echartsInstance1: any;
+    public echartsInstance2: any;
+    public echartsInstance3: any;
+    public echartsInstance4: any;
+
+    public timeData = ['month','week'];
+    // public timeData : any = {
+    //   'month':['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+    //   'week':['周一','周二','周三','周四','周五','周六','周日']
+    // }
     constructor() { }
 
   ngOnInit() { 
+    let self = this;
+    this.xData = this.month;
+    this.dynamicData = dynamicMonthData;
       this.options1 = {
         gridType: 'fit',
         compactType: 'none',
@@ -37,13 +54,35 @@ export class DynamicComponent implements OnInit, AfterContentInit {
         pushItems: true,//  在调整大小和拖动时推送项目 
         displayGrid: 'none',
         margin:10,
+        itemChangeCallBack: function(item,itemComponent){
+          let echarts = document.getElementById(`${item.id}`);
+          if(echarts){
+              echarts.style.width = itemComponent.width + 'px';
+              echarts.style.height = itemComponent.height-30+'px';
+  
+              // 根据不同的模块，重置相应的图
+              let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
+              a[item.id].resize();
+          }
+      },
+      itemResizeCallback: function(item,itemComponent) {
+          let echarts = document.getElementById(`${item.id}`);
+
+          if(echarts){
+              echarts.style.width = itemComponent.width+'px';
+              echarts.style.height = itemComponent.height-30+'px';
+
+              let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
+              a[item.id].resize();
+          }
+      }
     }
 
       this.dashboard1 = [
-        {cols:5,rows:3,y:0,x:0},
-        {cols:5,rows:3,y:0,x:5},
-        {cols:5,rows:3,y:3,x:0},
-        {cols:5,rows:3,y:3,x:5},
+        {cols:5,rows:3,y:0,x:0,id:'demo1'},
+        {cols:5,rows:3,y:0,x:5,id:'demo2'},
+        {cols:5,rows:3,y:3,x:0,id:'demo3'},
+        {cols:5,rows:3,y:3,x:5,id:'demo4'},
       ]
       
   }
@@ -62,7 +101,8 @@ export class DynamicComponent implements OnInit, AfterContentInit {
         type: 'line'
       }]
     };
-    this.dynamicData = dynamicData;
+    
+    
       this.mixOption = {
         tooltip: {
           trigger:'axis',
@@ -118,4 +158,30 @@ export class DynamicComponent implements OnInit, AfterContentInit {
       }
   }
 
+  onChartInit(e,i){
+    if(i==0){
+      this.echartsInstance1 = e;
+    }else if(i ==1){
+      this.echartsInstance2 = e;
+    }else if(i ==2){
+      this.echartsInstance3 = e;
+    }else if(i ==4){
+      this.echartsInstance4 = e;
+    }
+  }
+
+  deleteChart(i){
+    this.dashboard1.splice(i,1);
+  }
+
+  selectDataByTime(e){
+    if(e==='month'){
+      this.xData = this.month;
+      this.dynamicData = dynamicMonthData;
+    }else{
+      this.xData = this.week;
+      this.dynamicData = dynamicWeekData;
+    }
+    this.ngAfterContentInit();
+  }
 }

@@ -1,29 +1,24 @@
 <gridster [options]="options1">
     <gridster-item [item]="item" *ngFor="let item of dashboard1;let i = index;">
         <div class="select-input">
-            <ul nz-menu [nzMode]="'line'" class="menu-width">
-                <li nz-submenu>
-                    <span title>test</span>
-                    <ul>
-                        <li nz-menu-item>update</li>
-                        <li nz-menu-item>delete</li>
-                    </ul>
-                </li>
-            </ul>
+           <nz-dropdown [nzTrigger]="'click'">
+               <a nz-dropdown>drop-down<i class="anticon anticon-down"></i></a>
+               <ul nz-menu>
+                    <li nz-menu-item><i class="anticon anticon-edit"></i>update</li>
+                    <li nz-menu-item (click)="deleteChart(i)"><i class="anticon anticon-delete"></i>delete</li>
+               </ul>
+           </nz-dropdown>
+           <nz-dropdown class="mar-left10" *ngIf="i%2!=0">
+                <a nz-dropdown>时间周期<i class="anticon anticon-down"></i></a>
+                <ul nz-menu *ngFor="let row of timeData">
+                    <li nz-menu-item (click)="selectDataByTime(row)">{{row}}</li>
+                </ul>
+           </nz-dropdown>  
         </div>
-        <div [ngSwitch]="i+1">
-            <div *ngSwitchCase="'1'">
-                <div echarts [options]="myOption" class="my-option"></div>
+        <div [ngSwitch]="item?.id">
+            <div *ngSwitchCase="item?.id">
+                <div echarts class="my-option" [options]="item?.id == 'demo1' ? myOption  : item?.id == 'demo2' ? mixOption : item?.id == 'demo3' ? myOption : mixOption" (chartInit)="onChartInit($event,i)"></div>
             </div>
-            <div *ngSwitchCase="'2'">
-                <div echarts [options]="mixOption" class="mix-option"></div>
-            </div>
-            <div *ngSwitchCase="'3'">
-                    <div echarts [options]="mixOption" class="my-option"></div>
-                </div>
-                <div *ngSwitchCase="'4'">
-                    <div echarts [options]="myOption" class="mix-option"></div>
-                </div>
         </div>
     </gridster-item>
 </gridster>

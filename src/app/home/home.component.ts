@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
     options: GridsterConfig;
     dashboard: Array<GridsterItem>;
+    newDashboard = [];
+    
     public barOption:any;
     public lineOption: any;
     public pieOption:any;
@@ -33,7 +35,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
     //   this.radarOption = Object.assign({},this.radarOption);
     //   this.gaugeOption = Object.assign({},this.gaugeOption);
   }
-
   ngOnInit() {
     let self = this;
       this.options = {
@@ -49,9 +50,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
         pushItems: true,//  在调整大小和拖动时推送项目 
         displayGrid: 'none',
         margin:10,
-        minItemCols:3,
-        minItemRows:3,
-        minItemArea:9,
         itemChangeCallBack: function(item,itemComponent){
             let echarts = document.getElementById(`${item.id}`);
             if(echarts){
@@ -62,6 +60,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
                 a[item.id].resize();
             }
+            console.log(item)
         },
         itemResizeCallback: function(item,itemComponent) {
             let echarts = document.getElementById(`${item.id}`);
@@ -78,15 +77,17 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
 
       this.dashboard = [
-          {cols:5,rows:3,y:0,x:0,id:'demo1'},
+          {cols:5,rows:3,y:0,x:0,id:'demo1',minItemRows:3,minItemCols:4},
           {cols:5,rows:3,y:0,x:5,id:'demo2'},
           {cols:3,rows:3,y:0,x:10,id:'demo3'},
           {cols:10,rows:4,y:1,x:0,id:'demo4'},
-        //   {cols:3,rows:4,y:1,x:10,id:'demo5'}
+          {cols:3,rows:4,y:1,x:10,id:'demo5'}
       ]
 
   }
-  
+  saveAddress() {
+
+  }
   
   ngAfterContentInit(){
         this.barOption = {
@@ -367,25 +368,25 @@ export class HomeComponent implements OnInit, AfterContentInit {
         };
 
 
-        // this.gaugeOption = {
-        //     tooltip : {
-        //         formatter: "{a} <br/>{b} : {c}%"
-        //     },
-        //     toolbox: {
-        //         feature: {
-        //             // restore: {},
-        //             // saveAsImage: {}
-        //         }
-        //     },
-        //     series: [
-        //         {
-        //             name: '业务指标',
-        //             type: 'gauge',
-        //             detail: {formatter:'{value}%'},
-        //             data: [{value: 50, name: '完成率'}]
-        //         }
-        //     ]
-        // }
+        this.gaugeOption = {
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                    // restore: {},
+                    // saveAsImage: {}
+                }
+            },
+            series: [
+                {
+                    name: '业务指标',
+                    type: 'gauge',
+                    detail: {formatter:'{value}%'},
+                    data: [{value: 50, name: '完成率'}]
+                }
+            ]
+        }
 
     }
 
@@ -407,4 +408,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
             },2000);
         }
     }
-}
+
+    
+}   
