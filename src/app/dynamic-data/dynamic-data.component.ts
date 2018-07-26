@@ -61,7 +61,7 @@ export class DynamicComponent implements OnInit, AfterContentInit {
               echarts.style.height = itemComponent.height-30+'px';
   
               // 根据不同的模块，重置相应的图
-              let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
+              let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4};
               a[item.id].resize();
           }
       },
@@ -72,7 +72,7 @@ export class DynamicComponent implements OnInit, AfterContentInit {
               echarts.style.width = itemComponent.width+'px';
               echarts.style.height = itemComponent.height-30+'px';
 
-              let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
+              let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4};
               a[item.id].resize();
           }
       }
