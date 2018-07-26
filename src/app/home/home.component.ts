@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/cor
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 declare let echarts: any;
+declare let window: any;
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
     options: GridsterConfig;
     dashboard: Array<GridsterItem>;
-    newDashboard = [];
+
     
     public barOption:any;
     public lineOption: any;
@@ -26,15 +27,9 @@ export class HomeComponent implements OnInit, AfterContentInit {
     public echartsInstance3: any;
     public echartsInstance4: any;
     public echartsInstance5: any;
-
    
-  constructor() { 
-    //   this.barOption = Object.assign({},this.barOption);
-    //   this.lineOption = Object.assign({},this.lineOption);
-    //   this.pieOption = Object.assign({},this.pieOption);
-    //   this.radarOption = Object.assign({},this.radarOption);
-    //   this.gaugeOption = Object.assign({},this.gaugeOption);
-  }
+  constructor() { }
+
   ngOnInit() {
     let self = this;
       this.options = {
@@ -60,17 +55,21 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 let a = {'demo1': self.echartsInstance1,'demo2': self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
                 a[item.id].resize();
             }
-            console.log(item)
+
         },
         itemResizeCallback: function(item,itemComponent) {
             let echarts = document.getElementById(`${item.id}`);
-
             if(echarts){
                 echarts.style.width = itemComponent.width+'px';
                 echarts.style.height = itemComponent.height-80+'px';
 
                 let a = {'demo1': self.echartsInstance1,'demo2':self.echartsInstance2,'demo3':self.echartsInstance3,'demo4':self.echartsInstance4,'demo5':self.echartsInstance5};
                 a[item.id].resize();
+            }
+            for (let i = 0; i < self.dashboard.length; i++) {
+                if(item.id.indexOf(self.dashboard[i].id)!==-1)                {
+                    self.dashboard[i] = item;
+                }
             }
         }
       }
@@ -81,18 +80,16 @@ export class HomeComponent implements OnInit, AfterContentInit {
           {cols:5,rows:3,y:0,x:5,id:'demo2'},
           {cols:3,rows:3,y:0,x:10,id:'demo3'},
           {cols:10,rows:4,y:1,x:0,id:'demo4'},
-          {cols:3,rows:4,y:1,x:10,id:'demo5'}
+        //   {cols:3,rows:4,y:1,x:10,id:'demo5'}
       ]
 
   }
-  saveAddress() {
-
-  }
+ 
   
   ngAfterContentInit(){
         this.barOption = {
             title: {
-             text: '柱状图'
+             text: '柱状图',
             },
             // color: [
             //     '#000','#ff0033','#ff3300','#c23531','#2f4554', '#61a0a8'
@@ -115,7 +112,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
                     // magicType:{
                     //     type:['line','bar']
                     // },
-                    saveAsImage: {}
+                    // saveAsImage: {}
                 }
             },
             grid: {
