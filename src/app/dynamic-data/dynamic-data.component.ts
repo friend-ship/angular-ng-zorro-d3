@@ -11,7 +11,7 @@ declare let echarts: any;
 })
 export class DynamicComponent implements OnInit, AfterContentInit {
 
-  options1: GridsterConfig;
+  options: GridsterConfig;
     dashboard1: Array<GridsterItem>;
     itemToPush: GridsterItemComponent;
 
@@ -41,7 +41,7 @@ export class DynamicComponent implements OnInit, AfterContentInit {
     let self = this;
     this.xData = this.month;
     this.dynamicData = dynamicMonthData;
-      this.options1 = {
+      this.options = {
         gridType: 'fit',
         compactType: 'none',
         draggable: {
